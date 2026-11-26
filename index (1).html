@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#176b4d"><title>Sahabat Qur'an</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f8f5;color:#20352b;font-family:system-ui,sans-serif}
+header{background:linear-gradient(135deg,#176b4d,#2b8b62);color:white;padding:25px 18px 35px;border-radius:0 0 25px 25px}
+header h1{margin:0;font-size:25px}header p{margin:7px 0 0}
+main{max-width:700px;margin:-16px auto 30px;padding:0 14px}.card{background:white;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 20px #173c2810}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.pill{background:#eaf6ef;color:#176b4d;padding:5px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.track{height:8px;background:#e7eee9;border-radius:8px;margin:12px 0;overflow:hidden}.bar{height:100%;background:#f2c45c;width:14.28%}
+.ar{font-family:serif;font-size:34px;line-height:2;text-align:center;color:#173f2d;margin:12px 0}.latin{text-align:center;font-size:18px;font-weight:700;line-height:1.6}.meaning{text-align:center;color:#64736b;font-size:14px;margin-top:7px}
+button{border:0;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:700;cursor:pointer}.primary{background:#176b4d;color:white}.soft{background:#eaf6ef;color:#176b4d}.controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.controls button{flex:1}
+.small{font-size:12px;color:#68766d;line-height:1.55}.notice{background:#fff8e6;border-left:4px solid #f2c45c;padding:11px;border-radius:9px;font-size:13px;line-height:1.5}
+footer{text-align:center;color:#839087;font-size:12px;padding:10px}
+</style></head>
+<body>
+<header><h1>🌙 Sahabat Qur'an</h1><p>Belajar mengaji pelan-pelan, satu ayat demi satu ayat.</p></header>
+<main>
+<section class="card">
+<div class="row"><span class="pill">PELAJARAN 1 · SURAT AL-FATIHAH</span><strong id="count">1 / 7</strong></div>
+<div class="track"><div class="bar" id="bar"></div></div>
+<div class="ar" id="arabic" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+<div class="latin" id="latin">Bismillāhir-raḥmānir-raḥīm</div><div class="meaning" id="meaning">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</div>
+<div class="controls"><button class="soft" id="listen">🔊 Dengarkan panduan</button><button class="soft" id="repeat">↻ Ulangi</button></div>
+<p class="small">Suara perangkat membacakan panduan latin, bukan audio murottal. Untuk contoh bacaan Al-Qur'an yang tepat, dengarkan qari atau guru tepercaya.</p>
+<div class="controls"><button class="soft" id="prev">← Sebelumnya</button><button class="primary" id="next">Lanjut →</button></div>
+</section>
+<section class="card"><h3>🎤 Latihan membaca</h3><p>Coba baca ayatnya, lalu rekam latihanmu untuk didengarkan kembali.</p>
+<button class="primary" id="record">● Mulai merekam</button><p class="small" id="status">Rekaman hanya disimpan sementara di perangkat.</p><audio id="playback" controls style="display:none;width:100%"></audio></section>
+<section class="card"><h3>⭐ Cara belajar</h3><p>1. Dengarkan dahulu. 2. Ikuti perlahan. 3. Ulangi beberapa kali. 4. Minta orang tua atau guru menyimak makhraj dan tajwid.</p>
+<div class="notice">Tulisan latin hanya bantuan awal dan tidak menggantikan belajar membaca huruf Arab. Penilaian pelafalan sebaiknya dibimbing guru atau orang tua.</div></section>
+<footer>Sahabat Qur'an · Versi awal untuk belajar Al-Fatihah</footer></main>
+<script>
+const verses=[
+["بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ","Bismillāhir-raḥmānir-raḥīm","Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."],
+["الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ","Al-ḥamdu lillāhi rabbil-‘ālamīn","Segala puji bagi Allah, Tuhan seluruh alam."],
+["الرَّحْمَٰنِ الرَّحِيمِ","Ar-raḥmānir-raḥīm","Yang Maha Pengasih, Maha Penyayang."],
+["مَالِكِ يَوْمِ الدِّينِ","Māliki yaumid-dīn","Pemilik hari pembalasan."],
+["إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ","Iyyāka na‘budu wa iyyāka nasta‘īn","Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan."],
+["اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ","Ihdinaṣ-ṣirāṭal-mustaqīm","Tunjukilah kami jalan yang lurus."],
+["صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ","Ṣirāṭallażīna an‘amta ‘alaihim gairil-magḍūbi ‘alaihim wa laḍ-ḍāllīn","(Yaitu) jalan orang-orang yang telah Engkau beri nikmat, bukan jalan mereka yang dimurkai, dan bukan pula jalan mereka yang sesat."]
+];
+let index=0;const el=id=>document.getElementById(id);
+function show(){let v=verses[index];el("arabic").textContent=v[0];el("latin").textContent=v[1];el("meaning").textContent=v[2];el("count").textContent=(index+1)+" / 7";el("bar").style.width=((index+1)/7*100)+"%";el("prev").disabled=index===0;el("prev").style.opacity=index===0?".45":"1";el("next").textContent=index===6?"Selesai ✓":"Lanjut →"}
+function speak(){if(!("speechSynthesis"in window)){alert("Browser ini belum mendukung suara.");return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(verses[index][1]);u.lang="id-ID";u.rate=.78;speechSynthesis.speak(u)}
+el("listen").onclick=speak;el("repeat").onclick=speak;el("prev").onclick=()=>{if(index>0){index--;show()}};el("next").onclick=()=>{if(index<6){index++;show()}else alert("MasyaAllah! Latihan Al-Fatihah selesai. Ulangi bersama guru atau orang tua, ya.")};
+let recorder,chunks=[];
+el("record").onclick=async()=>{if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){el("status").textContent="Perekaman tidak didukung browser ini. Coba Chrome dan izinkan mikrofon.";return}
+if(recorder&&recorder.state==="recording"){recorder.stop();el("record").textContent="● Mulai merekam";return}
+try{let stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{let blob=new Blob(chunks,{type:"audio/webm"});let player=el("playback");player.src=URL.createObjectURL(blob);player.style.display="block";stream.getTracks().forEach(t=>t.stop());el("status").textContent="Rekaman siap diputar di bawah."};recorder.start();el("record").textContent="■ Berhenti merekam";el("status").textContent="Sedang merekam…";}catch(e){el("status").textContent="Mikrofon belum diizinkan. Periksa izin mikrofon pada browser."}};
+show();
+</script></body></html>
